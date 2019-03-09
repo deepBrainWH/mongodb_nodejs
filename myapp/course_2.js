@@ -106,9 +106,34 @@ function f6() {
     });
 }
 
-f1();
+function f7() {
+    let mongoClientPromise = MongoClient.connect(url, {useNewUrlParser: true}, function (err, db) {
+        if(err) throw err;
+        var dbase = db.db("mydb");
+        var docs = [
+            {"id": "00000001", "firstName": "Juan", "surname" : "Larko", "gender" : "M", "address1" : "646 West Beach Road", "address2" : "Apartment 818", "city" : "Kleinfeltersville", "state_region" : "Pennsylvania", "county_province" : "Lebanon", "postalCode" : "17039", "country" : "US", "acct_balance" : 285.6, "status" : "F" },
+            {"id" : "00000002", "firstName" : "Hassie", "surname" : "Cherrie", "gender" : "F", "address1" : "974 Slow Glade Street", "address2" : "Apartment 77", "city" : "Saltburn-by-the-Sea", "state_region" : "England", "county_province" : "Redcar and Cleveland", "postalCode" : "TS12", "country" : "GB", "acct_balance" : 837.38, "status" : "A" },
+            {"id" : "00000003", "firstName" : "Donovan", "surname" : "Heckard", "gender" : "M", "address1" : "9 South Breeze Way", "address2" : "Flat 509", "city" : "Praia da Leirosa", "state_region" : "Coimbra", "county_province" : "Ribeira Grande", "postalCode" : "3090-484", "country" : "PT", "acct_balance" : 194.06, "status" : "F" },
+            {"id" : "00000004", "firstName" : "Gemma", "surname" : "Farrin", "gender" : "F", "address1" : "870 Happy Snow Way", "address2" : "", "city" : "Sant'Ilario Ligure", "state_region" : "Liguria", "county_province" : "Genova", "postalCode" : "16167", "country" : "IT", "acct_balance" : 2337.84, "status" : "AAA" },
+            { "id" : "00000005", "firstName" : "Susann", "surname" : "Ulisch", "gender" : "F", "address1" : "578 Hearty Glade Way", "address2" : "", "city" : "Jahanabad Kutchery", "state_region" : "Bihar", "county_province" : "Jahanabad", "postalCode" : "804408", "country" : "IN", "acct_balance" : 238897.45, "status" : "C" },
+            { "id" : "00000006", "firstName" : "Hollis", "surname" : "Toncrey", "gender" : "M", "address1" : "123 Fast Rain Street", "address2" : "", "city" : "Cortegaça", "state_region" : "Aveiro", "county_province" : "São João da Pesqueira", "postalCode" : "3885-339", "country" : "PT", "acct_balance" : 82.11, "status" : "C" },
+            { "id" : "00000007", "firstName" : "Quinn", "surname" : "Raynolds", "gender" : "M", "address1" : "276 Gentle Hollow Circle", "address2" : "Flat 566", "city" : "Holt", "state_region" : "England", "county_province" : "Wiltshire", "postalCode" : "BA14", "country" : "GB", "acct_balance" : 925.4, "status" : "AAA" },
+            { "id" : "00000008", "firstName" : "Nolan", "surname" : "Selissen", "gender" : "M", "address1" : "457 South Snow Street", "address2" : "", "city" : "Willmenrod", "state_region" : "Rheinland-Pfalz", "county_province" : "", "postalCode" : "56459", "country" : "DE", "acct_balance" : 402.34, "status" : "C" },
+            { "id" : "00000009", "firstName" : "Tomas", "surname" : "Sunier", "gender" : "M", "address1" : "124 Happy Breeze Drive", "address2" : "Unit 388", "city" : "Bad Berleburg Elsoff", "state_region" : "Nordrhein-Westfalen", "county_province" : "Reg.-Bez. Arnsberg", "postalCode" : "57319", "country" : "DE", "acct_balance" : 4851.82, "status" : "A" },
+            { "id" : "00000010", "firstName" : "Scottie", "surname" : "Bertelle", "gender" : "M", "address1" : "763 Happy Mountain Street", "address2" : "Apartment 948", "city" : "Lisboa", "state_region" : "Lisboa", "county_province" : "Vila Franca do Campo", "postalCode" : "1300-605", "country" : "PT", "acct_balance" : 54772.64, "status" : "AAA" }
+        ]
+        dbase.collection("customers").insertMany(docs,{}, function (err, res) {
+            if(err) throw err;
+            console.log("insert successful!");
+        });
+        db.close();
+    });
+}
+
+// f1();
 // f2();
 // f3();
 // f4();
 // f5();
 // f6();
+f7();
