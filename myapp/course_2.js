@@ -2,7 +2,7 @@ var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017";
 
 function f1() {
-    MongoClient.connect(url, function (err, db) {
+    MongoClient.connect(url, {useNewUrlParser: true}, function (err, db) {
         if (err) throw err;
         console.log("Database has already connected!");
         var dbase = db.db("myblogs");
@@ -19,7 +19,7 @@ function f1() {
 }
 
 function f2() {
-    MongoClient.connect(url, function (err, db) {
+    MongoClient.connect(url, {useNewUrlParser: true}, function (err, db) {
         if (err) throw err;
         var dbase = db.db("review");
         var doc1 = {
@@ -54,7 +54,7 @@ function f2() {
 }
 
 function f3() {
-    MongoClient.connect(url, function (err, db) {
+    MongoClient.connect(url, {useNewUrlParser: true}, function (err, db) {
         if (err) throw err;
         var dbase = db.db("bookstore");
         var doc1 = {book_id: "1298747", title: "Mother Night", author: "Kurt Vonnegut"};
@@ -82,33 +82,33 @@ function f4() {
 
 function f5() {
     MongoClient.connect(url, {useNewUrlParser: true}, function (err, db) {
-        if(err) throw err;
+        if (err) throw err;
         var dbase = db.db("bookstore");
-        dbase.collection("books").deleteOne({book_id:639397},
+        dbase.collection("books").deleteOne({book_id: 639397},
             {}, function (err, res) {
-            if(err) throw err;
-            console.log("delete one record successful!");
-            db.close();
-        });
+                if (err) throw err;
+                console.log("delete one record successful!");
+                db.close();
+            });
     });
 }
 
 function f6() {
     MongoClient.connect(url, {useNewUrlParser: true}, function (err, db) {
-        if(err) throw err;
+        if (err) throw err;
         var dbase = db.db("bookstore");
-        dbase.collection("books").updateOne({book_id:"1298747"},
-            {$set:{quantity: 15}}, function (err, res) {
-            if(err) throw err;
-            console.log("update 1 record!");
-            db.close();
-        });
+        dbase.collection("books").updateOne({book_id: "1298747"},
+            {$set: {quantity: 15}}, function (err, res) {
+                if (err) throw err;
+                console.log("update 1 record!");
+                db.close();
+            });
     });
 }
 
-// f1();
+f1();
 // f2();
 // f3();
 // f4();
 // f5();
-f6();
+// f6();
