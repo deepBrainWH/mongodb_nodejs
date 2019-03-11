@@ -121,7 +121,7 @@ function f7() {
             { "id" : "00000008", "firstName" : "Nolan", "surname" : "Selissen", "gender" : "M", "address1" : "457 South Snow Street", "address2" : "", "city" : "Willmenrod", "state_region" : "Rheinland-Pfalz", "county_province" : "", "postalCode" : "56459", "country" : "DE", "acct_balance" : 402.34, "status" : "C" },
             { "id" : "00000009", "firstName" : "Tomas", "surname" : "Sunier", "gender" : "M", "address1" : "124 Happy Breeze Drive", "address2" : "Unit 388", "city" : "Bad Berleburg Elsoff", "state_region" : "Nordrhein-Westfalen", "county_province" : "Reg.-Bez. Arnsberg", "postalCode" : "57319", "country" : "DE", "acct_balance" : 4851.82, "status" : "A" },
             { "id" : "00000010", "firstName" : "Scottie", "surname" : "Bertelle", "gender" : "M", "address1" : "763 Happy Mountain Street", "address2" : "Apartment 948", "city" : "Lisboa", "state_region" : "Lisboa", "county_province" : "Vila Franca do Campo", "postalCode" : "1300-605", "country" : "PT", "acct_balance" : 54772.64, "status" : "AAA" }
-        ]
+        ];
         dbase.collection("customers").insertMany(docs,{}, function (err, res) {
             if(err) throw err;
             console.log("insert successful!");
